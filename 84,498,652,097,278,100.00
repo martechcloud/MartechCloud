@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Error: Not Logged In</title>
+  <style>
+    /* Styling for the error box */
+    .error-box {
+      background-color: #f8d7da;
+      border: 1px solid #f5c6cb;
+      color: #721c24;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-box">
+    <p>You are not logged in.</p>
+  </div>
+</body>
+</html>
