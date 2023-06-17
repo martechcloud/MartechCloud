@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <!--=== Coding by CodingLab | www.codinglabweb.com === -->
 <html lang="en">
 <head>
@@ -14,7 +14,61 @@
 
     <!--<title>Admin Dashboard Panel</title>--> 
 </head>
+
+<style>
+    /* Styles for the banner container */
+    .banner-container {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 200px;
+      min-height: 200px;
+      background-color: #f1f1f1; /* Lighter background color */
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: background-color 0.3s; /* Add transition effect */
+    }
+
+    /* Styles for the banner container when hovered */
+    .banner-container:hover {
+      background-color: rgba(0, 0, 0, 0.7); /* Darker background color on hover */
+    }
+
+    /* Styles for the banner image */
+    .banner-image {
+      max-width: 100%;
+      max-height: 100%;
+      margin-bottom: 10px;
+    }
+
+    /* Styles for the close button */
+    .close-button {
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Styles for the rest of the page */
+    body {
+      background-color: #ccc; /* Grey color for the rest of the page */
+      margin: 0;
+    }
+  </style>
+
 <body>
+
+    <div class="banner-container">
+        <!-- Banner image -->
+        <img class="banner-image" src="http://drive.google.com/uc?export=view&id=1vHQrxfRm9ekHucUR7eakErv9O3deEAZz" alt="Banner Image">
+        
+        <!-- Close button -->
+        <span class="close-button" onclick="closeBanner()">Close</span>
+    </div>
+
     <nav>
         <div class="logo-name">
             <div class="logo-image">
@@ -108,6 +162,14 @@
             </div>
 
             <script>
+                // Function to close the banner
+                function closeBanner() {
+                  var bannerContainer = document.querySelector('.banner-container');
+                  bannerContainer.remove();
+                }
+            </script>
+
+            <script>
                 window.onload = function() {
                     var iframe = document.getElementById('my-iframe');
                     var deviceHeight = window.innerHeight;
@@ -130,6 +192,8 @@
                     });
                 };
             </script>
+
+            
               
               
               
