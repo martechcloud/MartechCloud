@@ -127,6 +127,25 @@
                 };
             </script>
 
+	    <script>
+        var cellNumber = "D6";
+        // Replace 'WEB_APP_URL' with the actual web app URL obtained in step 3
+        var webAppUrl = 'https://script.google.com/macros/s/AKfycbxKiSPISfUwk03wXrxjERfGiN4OprqgYv3rAobW9MAOh1RR3sf03zRO335pSCS_XR8T/exec?cellNumber=' + cellNumber;
+        
+        fetch(webAppUrl)
+            .then(response => response.text())
+            .then(data => {
+                if (data.includes('active')) {
+                } else {
+                    // Redirect to another URL when the cell value is blank
+                    window.location.href = 'https://martechcloud.github.io/MartechCloud/'; // Replace with the URL of another page
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    </script>
+
         </div>
     </section>
 
