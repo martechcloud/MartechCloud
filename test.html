@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for the minimize button */
+        #minimize-button {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            background-color: #00b6cb;
+            color: white;
+            border: white;
+            padding: 5px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .white-text {
+            color: white;
+        }
+
+        #minimize-button:hover {
+            background-color: #5fa6f1;
+        }
+        
+        /* Custom CSS for the table */
+        table {
+            width: 80%;
+            margin: 70px auto;
+            background-color: #00b6cb;
+            color: white;
+            border-collapse: collapse;
+            box-shadow: 0 0 3px #00b6cb;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        th {
+            background-color: #00b6cb; /* Dark gray background for table header */
+        }
+
+        tr:nth-child(odd) {
+            background-color: white; /* Dark gray background for odd rows */
+        }
+
+        tr:nth-child(even) {
+            background-color: white; /* Slightly lighter gray background for even rows */
+        }
+    </style>
+</head>
+<body>
+    <button id="minimize-button" onclick="sendDataToGoogleSheet()">Add Data</button>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th class="white-text">No.</th>
+                <th class="white-text">Phone Number</th>
+                <th class="white-text">Customer Name</th>
+                <th class="white-text">Date</th>
+                <th class="white-text">Quantity</th>
+                <th class="white-text">Service Type</th>
+                <th class="white-text">Amount</th>
+                <th class="white-text">Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td contenteditable="false">1</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">2</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">3</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">4</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">5</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">6</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">7</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+
+            <tr>
+                <td contenteditable="false">8</td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+                <td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+            </tr>
+            <!-- Repeat this row structure for a total of 10 rows -->
+        </tbody>
+    </table>
+
+    <script>
+        function moveToNextCell(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const cell = event.target;
+                const cells = Array.from(cell.parentElement.children);
+                const currentIndex = cells.indexOf(cell);
+                if (currentIndex < cells.length - 1) {
+                    const nextCell = cells[currentIndex + 1];
+                    nextCell.focus();
+                }
+            }
+        }
+    </script>
+
+<script>
+    function sendDataToGoogleSheet() {
+        const cells = document.querySelectorAll('td[contenteditable="true"]');
+        const records = [];
+        let record = [];
+
+        cells.forEach((cell, index) => {
+            record.push(cell.innerText);
+            if ((index + 1) % 7 === 0) {
+                records.push(record);
+                record = [];
+            }
+        });
+
+        // Send 4 records at a time
+        let chunkSize = 8;
+        for (let i = 0; i < records.length; i += chunkSize) {
+            let chunk = records.slice(i, i + chunkSize);
+
+            // Send each chunk to the Apps Script web app
+            fetch('https://script.google.com/macros/s/AKfycbzY6s0eO35CbKIzrans0wbh0IhTcSjORMYOQXfGdg9zFxhDJrEFcloQ1VW5RjOfXA83/exec', {
+                method: 'POST',
+                body: JSON.stringify(chunk)
+            })
+            .then(response => response.text())
+            .then(message => {
+                alert(message);
+            })
+            .catch(error => {
+                console.error(error);
+            });
+        }
+    }
+</script>
+</body>
+</html>
