@@ -1,152 +1,480 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!----======== CSS ======== -->
-    <link rel="stylesheet" href="styles.css">
-     
-    <!----===== Iconscout CSS ===== -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"/>
+<style>
+        /* Custom CSS for the minimize button */
+        #minimize-button {
+            position: absolute;
+            top: 20px;
+            right: 10px;
+            background-color: #00b6cb;
+            color: white;
+            border: white;
+            padding: 5px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
 
-    <!--<title>Admin Dashboard Panel</title>--> 
+        .white-text {
+            color: white;
+        }
+
+        #minimize-button:hover {
+            background-color: #5fa6f1;
+        }
+        
+        /* Custom CSS for the table */
+        table {
+            width: 80%;
+            margin: 70px auto;
+            background-color: #00b6cb;
+            color: white;
+            border-collapse: collapse;
+            box-shadow: 0 0 3px #00b6cb;
+        }
+
+        .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top: 4px solid #00b6cb;
+        width: 30px;
+        height: 30px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto;
+        margin: 20px 20px 20px auto;
+        display: none;
+        }
+
+        .alert {
+        padding: 10px 15px; /* Increased padding for a balanced appearance */
+        background-color: #4CAF50; /* A shade of green */
+        color: white;
+        text-align: center;
+        border-radius: 20px; /* Rounded corners */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        display: none;
+        margin-top: 60px;
+        transition: background-color 0.3s, transform 0.3s; /* Smooth transition */
+        }
+
+/* Hover effect: darken background and slightly scale up */
+        .alert:hover {
+        background-color: #45a049; /* Darker shade of green */
+        transform: scale(1.02);
+        }
+
+        .alert2 {
+        padding: 10px;
+        background-color: lightgrey;
+        color: black;
+        text-align: center;
+        display: none;
+        margin-top: 10px;
+        }
+
+        @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        tr:hover {
+            background-color: #f0f0f0;
+        }
+
+        th {
+            background-color: #00b6cb; /* Dark gray background for table header */
+        }
+
+        tr:nth-child(odd) {
+            background-color: white; /* Dark gray background for odd rows */
+        }
+
+        tr:nth-child(even) {
+            background-color: white; /* Slightly lighter gray background for even rows */
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <div class="logo-name">
-            <div class="logo-image">
-                <img src="l.png" alt="">
-            </div>
-
-            <span class="logo_name">Martech Cloud</span>
-        </div>
-        
-        
-        <div class="menu-items">
-            <ul class="nav-links">
-                <li><a href="65,439,753,227,849,000.00.html">
-                    <i class="uil uil-estate"></i>
-                    <span class="link-name">Overview</span>
-                </a></li>
-                <li><a href="85,925,334,595,655,900.00.html">
-                    <i style = color:#00acc1; class="uil uil-database"></i>
-                    <span class="link-name">Audience</span>
-                </a></li>
-                <li><a href="9,631,258,122,269,800.00.html">
-                    <i class="uil uil-chart"></i>
-                    <span class="link-name">Analytics</span>
-                </a></li>
-                <li><a href="24,462,598,036,321,400.00.00.html">
-                    <i class="uil uil-comments"></i>
-                    <span class="link-name">Messenger</span>
-                </a></li>
-                <li><a href="#">
-                    <i style = color:#E5E4E2; class="uil uil-search"></i>
-                    <span class="link-name" style="color:#E5E4E2;">Help</span>
-                </a></li>
-                <li><a href="#">
-                    <i style = color:#E5E4E2; class="uil uil-users-alt"></i>
-                    <span class="link-name" style="color:#E5E4E2;">Unified Portal</span>
-                </a></li>
-            </ul>
-            
-            <ul class="logout-mode">
-                <li><a href="https://martechcloud.github.io/MartechCloud/">
-                    <i class="uil uil-signout"></i>
-                    <span class="link-name">Logout</span>
-                </a></li>
-
-                <li class="mode">
-                    <a 
-                        <i class=""></i>
-                    <span class="link-name"></span>
-                </a>
-
-                <div class="mode-toggle">
-                  <span class=""></span>
-                </div>
-            </li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="dashboard">
-        <div class="top">
-            <i class="uil uil-bars sidebar-toggle"></i>
-
-            <div class="search-box">
-                <i class="uil uil-search"></i>
-                <input type="text" placeholder="Search here...">
-            </div>
-    
-            <a href="#" class="profile">
-				<img src="abhi.png" alt="" width="45" height="40">
-			</a>
-        </div>
-
-        <div class="dash-content">
-            <div class="home-content">
-                <div class="overview-boxes">
-
-                    <style>
-                        iframe {
-                            width: 100%;
-                            height: 100%;
-                        }
-                    </style>
-          
-                  <iframe id = "my-iframe" src="test.html" frameborder="0" style="border:0" allowfullscreen></iframe>
-                 <br>
-        
-            </div>
-
-            <script>
-                window.onload = function() {
-                    var iframe = document.getElementById('my-iframe');
-                    var deviceHeight = window.innerHeight;
-                    var deviceWidth = window.innerWidth;
-        
-                    if (deviceWidth >= 768) {
-                        iframe.style.width = '100%';
-                    }
-                    iframe.style.height = deviceHeight + 'px';
-                    
-                    window.addEventListener('resize', function() {
-                        deviceHeight = window.innerHeight;
-                        deviceWidth = window.innerWidth;
-                        iframe.style.height = deviceHeight + 'px';
-                        if (deviceWidth >= 768) {
-                            iframe.style.width = '100%';
-                        } else {
-                            iframe.style.width = '100%';
-                        }
-                    });
-                };
-            </script>
-	    <script>
-        var cellNumber = "D2";
-        // Replace 'WEB_APP_URL' with the actual web app URL obtained in step 3
-        var webAppUrl = 'https://script.google.com/macros/s/AKfycbxKiSPISfUwk03wXrxjERfGiN4OprqgYv3rAobW9MAOh1RR3sf03zRO335pSCS_XR8T/exec?cellNumber=' + cellNumber;
-        
-        fetch(webAppUrl)
-            .then(response => response.text())
-            .then(data => {
-                if (data.includes('active')) {
-                } else {
-                    // Redirect to another URL when the cell value is blank
-                    window.location.href = 'https://martechcloud.github.io/MartechCloud/'; // Replace with the URL of another page
+<div class="loading-spinner" id="loadingSpinner"></div>
+<div class="alert" id="alertMessage"></div>
+<div class="alert2" id="alertMessage2"></div>
+<button id="minimize-button" onclick="checkCellColorsBeforeSending()">Add Data</button> 
+<table class="table table-bordered">
+<thead>
+<tr>
+<th class="white-text">No.</th>
+<th class="white-text">Phone Number</th>
+<th class="white-text">Customer Name</th>
+<th class="white-text">Date</th>
+<th class="white-text">Quantity</th>
+<th class="white-text">Service Type</th>
+<th class="white-text">Amount</th>
+<th class="white-text">Address</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td contenteditable="false">1</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">2</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">3</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">4</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">5</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">6</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">7</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<tr>
+<td contenteditable="false">8</td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+<td contenteditable="true" onkeydown="moveToNextCell(event)"></td>
+</tr>
+<!-- Repeat this row structure for a total of 10 rows -->
+</tbody>
+</table>
+<script>
+        function moveToNextCell(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                const cell = event.target;
+                const cells = Array.from(cell.parentElement.children);
+                const currentIndex = cells.indexOf(cell);
+                if (currentIndex < cells.length - 1) {
+                    const nextCell = cells[currentIndex + 1];
+                    nextCell.focus();
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+            }
+        }
     </script>
 
-        </div>
-    </section>
+<script>
+    function sendDataToGoogleSheet() {
+        const cells = document.querySelectorAll('td[contenteditable="true"]');
+        var loadingSpinner = document.getElementById("loadingSpinner");
+        loadingSpinner.style.display = "inline-block";
+        const records = [];
+        let record = [];
 
-    <--<script src="scripts.js"></script>-->
+        cells.forEach((cell, index) => {
+            record.push(cell.innerText);
+            if ((index + 1) % 7 === 0) {
+                records.push(record);
+                record = [];
+            }
+        });
+
+        // Send 4 records at a time
+        let chunkSize = 8;
+        for (let i = 0; i < records.length; i += chunkSize) {
+            let chunk = records.slice(i, i + chunkSize);
+
+            // Send each chunk to the Apps Script web app
+            fetch('https://script.google.com/macros/s/AKfycbzY6s0eO35CbKIzrans0wbh0IhTcSjORMYOQXfGdg9zFxhDJrEFcloQ1VW5RjOfXA83/exec', {
+                method: 'POST',
+                body: JSON.stringify(chunk)
+            })
+            .then(response => response.text())
+            .then(message => {
+                alertMessage.style.display = "block";
+                alertMessage.innerHTML = "Data Added Successfully.";
+                setTimeout(function() {
+                document.querySelector('.alert').style.display = 'none';
+                }, 2000); // 10 seconds
+                loadingSpinner.style.display = "none";
+                setTimeout(function(){
+                    location.reload();
+                }, 2000); // 2000 milliseconds = 2 seconds
+            })
+            .catch(error => {
+                console.error(error);
+                loadingSpinner.style.display = "none";
+            });
+        }
+    }
+</script>
+<script>
+document.addEventListener("keydown", function(event) {
+    let activeElement = document.activeElement;
+    if (activeElement.tagName === "TD" || activeElement.tagName === "TH") {
+        let cell = activeElement;
+        let row = cell.parentElement;
+        let table = row.parentElement;
+        let rowIndex = Array.from(row.parentElement.children).indexOf(row);
+        let cellIndex = Array.from(row.children).indexOf(cell);
+        
+        switch (event.key) {
+            case "ArrowUp":
+                if (rowIndex > 0) {
+                    table.children[rowIndex - 1].children[cellIndex].focus();
+                }
+                break;
+            case "ArrowDown":
+                if (rowIndex < table.children.length - 1) {
+                    table.children[rowIndex + 1].children[cellIndex].focus();
+                }
+                break;
+            case "ArrowLeft":
+                if (cellIndex > 0) {
+                    row.children[cellIndex - 1].focus();
+                }
+                break;
+            case "ArrowRight":
+                if (cellIndex < row.children.length - 1) {
+                    row.children[cellIndex + 1].focus();
+                }
+                break;
+        }
+    }
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    validatePhoneNumbers();
+
+    // Add event listener for each cell in the Phone Number column
+    let phoneCells = document.querySelectorAll('td:nth-child(2)');
+    phoneCells.forEach(function(cell) {
+        cell.addEventListener('input', validatePhoneNumbers);
+    });
+});
+
+function validatePhoneNumbers() {
+    let phoneCells = document.querySelectorAll('td:nth-child(2)');
+    let phoneRegex = /^91\d{10}$/;  // Starts with 91 and has a total length of 12 digits
+
+    phoneCells.forEach(function(cell) {
+        let cellValue = cell.innerText.trim();
+        if (cellValue === "") {
+            cell.style.backgroundColor = "";
+            return;  // Skip validation for blank cells
+        }
+        
+        if (!phoneRegex.test(cellValue)) {
+            cell.style.backgroundColor = "lightcoral";
+        } else {
+            cell.style.backgroundColor = "";
+        }
+    });
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    validateDates();
+
+    // Add event listener for each cell in the Date column
+    let dateCells = document.querySelectorAll('td:nth-child(4)');
+    dateCells.forEach(function(cell) {
+        cell.addEventListener('input', validateDates);
+    });
+});
+
+function validateDates() {
+    let dateCells = document.querySelectorAll('td:nth-child(4)');
+    let dateRegex = /^(0[1-9]|[12][0-9]|3[01])[-](0[1-9]|1[0-2])[-]\d{4}$/;  // DD-MM-YYYY format
+
+    dateCells.forEach(function(cell) {
+        let cellValue = cell.innerText.trim();
+        if (cellValue === "" || cellValue === "DD-MM-YYYY" ) {
+            cell.style.backgroundColor = "";
+            return;  // Skip validation for blank cells
+        }
+        
+        if (!dateRegex.test(cellValue)) {
+            cell.style.backgroundColor = "lightcoral";
+        } else {
+            cell.style.backgroundColor = "";
+        }
+    });
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    validateQuantityAndAmount();
+
+    // Add event listeners for each cell in the Quantity and Amount columns
+    let quantityCells = document.querySelectorAll('td:nth-child(5)');
+    let amountCells = document.querySelectorAll('td:nth-child(7)');
+    quantityCells.forEach(function(cell) {
+        cell.addEventListener('input', validateQuantityAndAmount);
+    });
+    amountCells.forEach(function(cell) {
+        cell.addEventListener('input', validateQuantityAndAmount);
+    });
+});
+
+function validateQuantityAndAmount() {
+    validateNumeric('td:nth-child(5)');  // Quantity column
+    validateNumeric('td:nth-child(7)');  // Amount column
+}
+
+function validateNumeric(selector) {
+    let cells = document.querySelectorAll(selector);
+    let numericRegex = /^-?\d*(\.\d+)?$/;  // Allows integers and floating point numbers
+
+    cells.forEach(function(cell) {
+        let cellValue = cell.innerText.trim();
+        if (cellValue === "") {
+            cell.style.backgroundColor = "";
+            return;  // Skip validation for blank cells
+        }
+        
+        if (!numericRegex.test(cellValue)) {
+            cell.style.backgroundColor = "lightcoral";
+        } else {
+            cell.style.backgroundColor = "";
+        }
+    });
+}
+</script>
+
+<script>
+function checkCellColorsBeforeSending() {
+    let editableCells = document.querySelectorAll('td[contenteditable="true"]');
+    for (let cell of editableCells) {
+        if (window.getComputedStyle(cell).backgroundColor === "rgb(240, 128, 128)") {  // RGB value for lightcoral
+            alertMessage.style.display = "block";
+            alertMessage.innerHTML = "Please check the format of the";
+            setTimeout(function() {
+            document.querySelector('.alert').style.display = 'none';
+            }, 2000); // 10 seconds
+            return;
+        }
+    }
+    sendDataToGoogleSheet();  // Call the original function if all cells are valid
+}
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    updateDatePlaceholders();
+
+    // Add event listeners for each cell in the Date column
+    let dateCells = document.querySelectorAll('td:nth-child(4)');
+    dateCells.forEach(function(cell) {
+        cell.addEventListener('focus', function() {
+            if (cell.innerText.trim() === "DD-MM-YYYY") {
+                cell.innerText = "";
+                cell.style.color = "black";  // Assuming default text color is white
+            }
+        });
+        cell.addEventListener('blur', updateDatePlaceholders);
+    });
+});
+
+function updateDatePlaceholders() {
+    let dateCells = document.querySelectorAll('td:nth-child(4)');
+    dateCells.forEach(function(cell) {
+        if (cell.innerText.trim() === "") {
+            cell.innerText = "DD-MM-YYYY";
+            cell.style.color = "lightgrey";
+        }
+    });
+}
+</script>
+
+<script>
+function checkCellColorsBeforeSending() {
+    let editableCells = document.querySelectorAll('td[contenteditable="true"]');
+    for (let cell of editableCells) {
+        if (window.getComputedStyle(cell).backgroundColor === "rgb(240, 128, 128)") {  // RGB value for lightcoral
+            alertMessage2.style.display = "block";
+            alertMessage2.innerHTML = "Please check the format of the data";
+            setTimeout(function() {
+            document.querySelector('.alert2').style.display = 'none';
+            }, 2000); // 10 seconds
+            return;
+        }
+    }
+    
+    // Remove placeholder from date cells before sending data
+    let dateCells = document.querySelectorAll('td:nth-child(4)');
+    dateCells.forEach(function(cell) {
+        if (cell.innerText.trim() === "DD-MM-YYYY") {
+            cell.innerText = "";
+        }
+    });
+
+    sendDataToGoogleSheet();  // Call the original function after removing placeholder values
+
+    // Restore placeholder values after sending data
+    updateDatePlaceholders();
+}
+</script>
 </body>
 </html>
